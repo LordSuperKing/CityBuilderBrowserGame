@@ -9,6 +9,7 @@ type CityViewProps = {
 
 export default function CityView({ population }: CityViewProps) {
     const [imageSrc, setImageSrc] = useState('');
+    
 
     useEffect(() => {
         let index = 1;
@@ -27,5 +28,5 @@ export default function CityView({ population }: CityViewProps) {
         loadImage();
     }, [population]);
 
-    return <img className="img-fluid" src={imageSrc} alt="City" />;
+    return <img style={{ transition: '1s ease-in-out'}} className="img-fluid" src={imageSrc} alt="City" />;
 }

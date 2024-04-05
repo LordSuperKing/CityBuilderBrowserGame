@@ -10,8 +10,8 @@ export function StateBar() {
     <>
       <Row>
         <Col>
-         <StateBarItem description={'Satisfaction'} value={populationState.satisfaction}></StateBarItem>
-         <StateBarItem description={'Population'} value={populationState.amount}></StateBarItem>
+          <StateBarItem description={'Satisfaction'} value={populationState.satisfaction}></StateBarItem>
+          <StateBarItem description={'Population'} value={populationState.amount}></StateBarItem>
         </Col>
         <Col>
           <StateBarItem description={'Food'} value={resourcesState.food}></StateBarItem>
@@ -20,7 +20,11 @@ export function StateBar() {
         <Col>
           <StateBarItem description={''} value={''}></StateBarItem>
           <StateBarItem description={''} value={''}></StateBarItem>
-          </Col>
+        </Col>
+        <Col>
+          <StateBarItem description={'Bip'} value={resourcesState.bipPercentage}></StateBarItem>
+          <StateBarItem description={'Gold'} value={resourcesState.gold}></StateBarItem>
+        </Col>
       </Row>
     </>
   )

@@ -4,33 +4,34 @@ import { Col, Row } from "react-bootstrap";
 import { StateBar } from "../components/statebar/StateBar";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import {
-  populationGrowth,
-  startPopulationGrowth,
+    populationGrowth,
+    startPopulationGrowth,
 } from "../redux/populationSlice";
-import { EconomyBar } from "../components/economy/EconomyBar";
+import { EconomyBarLeft } from "../components/economy/EconomyBarLeft";
+import { EconomyBarRight } from "../components/economy/EconomyBarRight";
 
 export function GameScreen() {
-  const populationState = useAppSelector(
-    (state) => state.population.populationState
-  );
+    const populationState = useAppSelector(
+        (state) => state.population.populationState
+    );
 
-  return (
-    <>
-      <Row>
-        <StateBar></StateBar>
-      </Row>
-      <Row className="g-1">
-        <Col xs={3}>
-          <EconomyBar></EconomyBar>
-        </Col>
-        <Col xs={6}>
-          <CityView population={populationState.amount}></CityView>
-        </Col>
-        <Col xs={3}>
-          <EconomyBar></EconomyBar>
-        </Col>
-      </Row>
-      <Row></Row>
-    </>
-  );
+    return (
+        <>
+            <Row>
+                <StateBar></StateBar>
+            </Row>
+            <Row className="g-1">
+                <Col xs={3}>
+                    <EconomyBarLeft></EconomyBarLeft>
+                </Col>
+                <Col xs={6}>
+                    <CityView population={populationState.amount}></CityView>
+                </Col>
+                <Col xs={3}>
+                    <EconomyBarRight></EconomyBarRight>
+                </Col>
+            </Row>
+            <Row></Row>
+        </>
+    );
 }
