@@ -11,21 +11,21 @@ export function EconomyBarLeft() {
       <Row className="mb-2">
         <Col>
           <EconomyBuilding
-            buildingData={cityState.city.buildings[0]}
+            buildingData={cityState.buildings[0]}
           ></EconomyBuilding>
         </Col>
       </Row>
       <Row className="mb-2">
         <Col>
           <EconomyBuilding
-            buildingData={cityState.city.buildings[1]}
+            buildingData={cityState.buildings[1]}
           ></EconomyBuilding>
         </Col>
       </Row>
       <Row className="mb-2">
         <Col>
           <EconomyBuilding
-            buildingData={cityState.city.buildings[2]}
+            buildingData={cityState.buildings[2]}
           ></EconomyBuilding>
         </Col>
       </Row>

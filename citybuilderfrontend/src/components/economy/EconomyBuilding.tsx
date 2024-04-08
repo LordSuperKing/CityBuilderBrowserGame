@@ -9,12 +9,19 @@ type EconomyBuildingProps = {
 };
 
 export function EconomyBuilding({ buildingData }: EconomyBuildingProps) {
+    const [bipPercentageInput, setBipPercentageInput] = useState(buildingData.bipPercentage.toString());
     const dispatch = useAppDispatch();
 
-    const handleBipPercentage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateBuildingPercentageIfPossible(buildingData, +event.target.value))
-        
-    };
+
+    function handleBipPercentageSubmit() {
+        let value = parseFloat(bipPercentageInput);
+        if (value < 0) value = 0;
+        if (value > 100) value = 100;
+
+        dispatch(updateBuildingPercentageIfPossible(buildingData, value));
+        setBipPercentageInput(value.toString()); // Update local state to reflect the corrected value
+    }
+
 
     if (buildingData.id.startsWith('l')) {
         return (
@@ -25,11 +32,10 @@ export function EconomyBuilding({ buildingData }: EconomyBuildingProps) {
                     <Card.Text style={{ fontSize: "10px" }}>
                         {buildingData.description}
                     </Card.Text>
-                 
+
                 </Card.Body>
             </Card>
         );
-        
     }
 
 
@@ -47,8 +53,9 @@ export function EconomyBuilding({ buildingData }: EconomyBuildingProps) {
                         <Form.Control
                             style={{ fontSize: "10px" }}
                             type="number"
-                            value={buildingData.bipPercentage}
-                            onChange={handleBipPercentage}
+                            value={bipPercentageInput}
+                            onChange={(e) => setBipPercentageInput(e.target.value)}
+                            onBlur={handleBipPercentageSubmit}
                             min="0"
                             max="100"
                         />

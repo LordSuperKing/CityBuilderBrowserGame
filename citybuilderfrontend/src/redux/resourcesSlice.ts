@@ -22,11 +22,25 @@ export const resourcesSlice = createSlice({
   name: "resources",
   initialState,
   reducers: {
+    setFood: (state, action: PayloadAction<number>) => {
+      state.resourcesState.food = action.payload;
+    },
+    foodConsume: (state, action: PayloadAction<number>) => {
+      if (state.resourcesState.food - action.payload < 0) {
+        state.resourcesState.food = 0;
+      } else {
+        state.resourcesState.food = state.resourcesState.food - action.payload;
+      }
+    },
     setBipPercentage: (state, action: PayloadAction<number>) => {
       state.resourcesState.bipPercentage = action.payload;
+    },
+    setGold: (state,action: PayloadAction<number>) => {
+      state.resourcesState.gold = action.payload
     }
   },
 });
 
-export const { setBipPercentage } = resourcesSlice.actions;
+export const { setBipPercentage, setFood, foodConsume, setGold } =
+  resourcesSlice.actions;
 export const resourcesReducer = resourcesSlice.reducer;

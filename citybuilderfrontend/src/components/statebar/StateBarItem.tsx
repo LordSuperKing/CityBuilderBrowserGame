@@ -1,16 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import './StateBarItem.css';
 import { LiaLocationArrowSolid } from 'react-icons/lia';
 import { FaMinus } from 'react-icons/fa';
+import { IconType } from 'react-icons';
+import { IoFastFoodOutline } from "react-icons/io5";
+
 
 type StateBarItemProps = {
-    description: string;
+    description: ReactNode[];
     value: number | string;
 };
 
 export function StateBarItem({ description, value }: StateBarItemProps) {
     const previousValueRef = useRef(value);
+    const formatter = new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 0, // Minimale Anzahl von Nachkommastellen
+        maximumFractionDigits: 2, // Maximale Anzahl von Nachkommastellen
+    });
+
+    
+
 
     useEffect(() => {
         if (value !== previousValueRef.current) {
@@ -30,9 +40,12 @@ export function StateBarItem({ description, value }: StateBarItemProps) {
     }
 
     return (
-        <Row style={{ width: '300px' }} className='container'>
-            <Col xs={5} className='text-start description'>{description}</Col>
-            <Col xs={5} className='text-start value'>{value}</Col>
+        <Row className='container small'>
+            <Col xs={2} className='text-start description'>{ description[0] }</Col>
+            <Col xs={8} className='text-start value'>
+                {typeof value === 'number' ? formatter.format(value) : value}
+            </Col>
+
             <Col xs={1} className='text-end'>{showArrow()}</Col>
         </Row>
     );

@@ -1,1 +1,8 @@
-export enum Resources {FOOD, WOOD, STONE, GOLD}
+export enum Resources {
+  FOOD = "FOOD",
+  WOOD = "WOOD",
+  STONE = "STONE",
+  GOLD = "GOLD",
+  POPULATION = "POPULATION",
+  SATISFACTION = "SATISFACTION",
+}
