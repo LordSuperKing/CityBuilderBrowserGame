@@ -10,12 +10,10 @@ export type Population = {
 
 
 const initialState: Population = {
- 
     isGrowing: true,
     baseGrowthRate: 0.005,
     amount: 1,
     satisfaction: 100,
-  
 };
 
 

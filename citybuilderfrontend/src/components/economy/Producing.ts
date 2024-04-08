@@ -10,23 +10,18 @@ export const Producing =
   (dispatch: AppDispatch, getState: () => RootState) => {
     const populationState = getState().population;
 
-    const resourcesSate = getState().resources.resourcesState;
+    const resourcesState = getState().resources.resourcesState;
 
     if (building.resource) {
       switch (building.resource) {
         case Resources.FOOD: {
           if (building.isProducing) {
             const newFoodState =
-              resourcesSate.food +
+              resourcesState.food +
               populationState.amount *
                 building.baseProductionRate! *
                 (building.bipPercentage / 100);
 
-            console.log(
-              populationState.amount *
-                building.baseProductionRate! *
-                (building.bipPercentage / 100)
-            );
             dispatch(setFood(newFoodState));
           }
           break;
@@ -35,20 +30,15 @@ export const Producing =
           {
             if (building.isProducing) {
               const newGold =
-                resourcesSate.gold +
+                resourcesState.gold +
                 populationState.amount *
-                  (resourcesSate.bipPercentage / 100) *
+                  (resourcesState.bipPercentage / 100) *
                   building.baseProductionRate!;
               dispatch(setGold(newGold));
             }
           }
           break;
-        // case Resources.STONE:
-        //   {
-        //     if (building.isProducing) {
-        //     }
-        //   }
-        //   break;
+
         case Resources.POPULATION:
           {
             if (building.isProducing) {
@@ -65,11 +55,32 @@ export const Producing =
                 } else {
                   newPopulation = currentPopulation + Math.floor(growth);
                 }
-                if (newPopulation < 1 ) {
-                  newPopulation = 1
+                if (newPopulation < 1) {
+                  newPopulation = 1;
                 }
 
-                dispatch(setPopulation(newPopulation))
+                dispatch(setPopulation(newPopulation));
+              } else {
+                const currentPopulation = populationState.amount;
+                const growth =
+                  ((currentPopulation * (populationState.satisfaction - 50)) /
+                    100) *
+                  populationState.baseGrowthRate;
+                let newPopulation;
+
+                if (growth > 0) {
+                  newPopulation = currentPopulation + Math.ceil(growth);
+                } else {
+                  newPopulation = currentPopulation + Math.floor(growth);
+                }
+                if (newPopulation > currentPopulation) {
+                  newPopulation = currentPopulation;
+                }
+                if (newPopulation < 1) {
+                  newPopulation = 1;
+                }
+
+                dispatch(setPopulation(newPopulation));
               }
             }
           }
@@ -79,19 +90,30 @@ export const Producing =
           {
             if (building.isProducing) {
               let plusOrMinus = 1;
-              if (resourcesSate.food === 0) {
+              if (resourcesState.food < populationState.amount) {
                 plusOrMinus = -1;
               }
               let newSatisfaction =
                 populationState.satisfaction +
                 building.baseProductionRate! * plusOrMinus;
+                
               if (newSatisfaction < 0) {
                 newSatisfaction = 0;
+              }
+              if (newSatisfaction > 100) {
+                newSatisfaction = 100;
               }
               dispatch(setSatisfaction(newSatisfaction));
             }
           }
           break;
+
+        // case Resources.STONE:
+        //   {
+        //     if (building.isProducing) {
+        //     }
+        //   }
+        //   break;
 
         default:
           break;

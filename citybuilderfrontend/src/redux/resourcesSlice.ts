@@ -26,6 +26,7 @@ export const resourcesSlice = createSlice({
       state.resourcesState.food = action.payload;
     },
     foodConsume: (state, action: PayloadAction<number>) => {
+      console.log(state.resourcesState.food - action.payload);
       if (state.resourcesState.food - action.payload < 0) {
         state.resourcesState.food = 0;
       } else {

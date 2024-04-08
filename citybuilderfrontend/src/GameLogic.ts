@@ -7,14 +7,13 @@ import { events } from "./components/Events/Events";
 export const GameLogic =
   () => (dispatch: AppDispatch, getState: () => RootState) => {
     const intervalId = setInterval(() => {
-            for(const building of getState().city.buildings) {
-                dispatch(Producing(building))
-            }
-            dispatch(foodConsume(getState().population.amount))
+      for(const building of getState().city.buildings) {
+        dispatch(Producing(building))
+      }
+      dispatch(foodConsume(getState().population.amount))
+      dispatch(events())
 
-            dispatch(events())
 
-
-    },1000)
+    },500)
     return () => clearInterval(intervalId);
   };
