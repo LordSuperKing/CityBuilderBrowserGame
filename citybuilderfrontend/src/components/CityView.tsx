@@ -28,5 +28,5 @@ export default function CityView({ population }: CityViewProps) {
         loadImage();
     }, [population]);
 
-    return <img style={{ transition: '1s ease-in-out'}} className="img-fluid" src={imageSrc} alt="City" />;
+    return <img style={{ maxHeight: "94%"}} className="img-fluid" src={imageSrc} alt="City" />;
 }
