@@ -1,5 +1,5 @@
 export enum Resources {
-  FOOD = "FOOD",
+  FOOD = "FOOD2",
   WOOD = "WOOD",
   STONE = "STONE",
   GOLD = "GOLD",

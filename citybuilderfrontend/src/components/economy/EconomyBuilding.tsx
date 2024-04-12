@@ -19,7 +19,7 @@ export function EconomyBuilding({ buildingData }: EconomyBuildingProps) {
         if (value > 100) value = 100;
 
         dispatch(updateBuildingPercentageIfPossible(buildingData, value));
-        setBipPercentageInput(value.toString()); // Update local state to reflect the corrected value
+        setBipPercentageInput(value.toString()); 
     }
 
 
@@ -54,7 +54,7 @@ export function EconomyBuilding({ buildingData }: EconomyBuildingProps) {
                             style={{ fontSize: "10px" }}
                             type="number"
                             value={bipPercentageInput}
-                            onChange={(e) => setBipPercentageInput(e.target.value)}
+                            onChange={(e) => { setBipPercentageInput(e.target.value) }}
                             onBlur={handleBipPercentageSubmit}
                             min="0"
                             max="100"

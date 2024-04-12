@@ -7,7 +7,8 @@ import { setBipPercentage } from "./resourcesSlice";
 export type City = {
   level: number;
   buildings: BuildingData[];
-  era: number
+  cityBuildings: BuildingData[];
+  era: number;
 };
 
 
@@ -15,13 +16,14 @@ export type City = {
 export const initialState: City = {
   level: 0,
   buildings: allBuildingsData,
+  cityBuildings: allBuildingsData.slice(0-6),
   era: 0
 };
 
 export const updateBuildingPercentageIfPossible =
   (building: BuildingData, newPercentage: number) =>
   (dispatch: AppDispatch, getState: () => RootState) => {
-    const availableBip = getState().resources.resourcesState.bipPercentage
+    const availableBip = getState().resources.bipPercentage
     const buildingToUpdate = getState().city.buildings.find((it) => it.id === building.id)
     const totalAvailableBip = availableBip + buildingToUpdate!.bipPercentage
 

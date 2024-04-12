@@ -1,14 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit";
 import { populationReducer } from "./populationSlice";
-import { resourcesReducer, resourcesSlice } from "./resourcesSlice";
+import { resourcesReducer } from "./resourcesSlice";
 import { cityReducer } from "./citySlice";
-import { settingsReducer, settingsSlice } from "./settingsSlice";
+import { settingsReducer } from "./settingsSlice";
+import { eventsReducer as eventsReducer } from "./eventSlice";
 export const store = configureStore({
   reducer: {
     population: populationReducer,
     resources: resourcesReducer,
     city: cityReducer,
     settings: settingsReducer,
+    events: eventsReducer,
   },
 });
 

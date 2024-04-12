@@ -10,7 +10,7 @@ export const Producing =
   (dispatch: AppDispatch, getState: () => RootState) => {
     const populationState = getState().population;
 
-    const resourcesState = getState().resources.resourcesState;
+    const resourcesState = getState().resources;
 
     if (building.resource) {
       switch (building.resource) {

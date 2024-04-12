@@ -13,7 +13,7 @@ export function StateBar() {
     (state) => state.population
   );
   const resourcesState = useAppSelector(
-    (state) => state.resources.resourcesState
+    (state) => state.resources
   );
   return (
     <>
