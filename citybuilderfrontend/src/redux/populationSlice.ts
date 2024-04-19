@@ -1,6 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppDispatch } from "./reduxStore";
 
+const initPopulation = import.meta.env.VITE_POPULATION;
+
+
 export type Population = {
   isGrowing: boolean;
   baseGrowthRate: number;
@@ -10,10 +13,10 @@ export type Population = {
 
 
 const initialState: Population = {
-    isGrowing: true,
-    baseGrowthRate: 0.005,
-    amount: 1,
-    satisfaction: 100,
+  isGrowing: true,
+  baseGrowthRate: 0.005,
+  amount: initPopulation,
+  satisfaction: 100,
 };
 
 

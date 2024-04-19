@@ -1,5 +1,3 @@
-import '../assets/images/city/c1.webp'
-
 import React, { useState, useEffect } from 'react';
 import { AdvisorItem } from './Events/AdvisorItem';
 type CityViewProps = {
@@ -12,36 +10,45 @@ export default function CityView({ population }: CityViewProps) {
     const [imageSrc, setImageSrc] = useState('');
 
 
+    const [index, setIndex] = useState(1);
+
+    // let index = 1;
+
     useEffect(() => {
-        let index = 1;
         if (population > 5) {
-            index = 2
+            setIndex(2)
         }
         if (population > 10) {
-            index = 3
+            setIndex(3)
         }
         if (population > 20) {
-            index = 4
+            setIndex(4)
         }
         if (population > 50) {
-            index = 5
+            setIndex(5)
         }
-        const loadImage = async () => {
-            try {
-                const image = await import(`../assets/images/city/c${index}.webp`);
-                setImageSrc(image.default);
-            } catch (err) {
-                console.error('Fehler beim Laden des Bildes', err);
-            }
-        };
+        if (population > 100) {
+            setIndex(6)
+        }
+        if (population > 200) {
+            setIndex(7)
+        }
+        if (population > 400) {
+            setIndex(8)
+        }
+        if (population > 800) {
+            setIndex(9)
+        }
+        if (population > 1600) {
+            setIndex(10)
+        }
 
-        loadImage();
     }, [population]);
 
     return (
         <>
             <AdvisorItem></AdvisorItem>
-            <img style={{ maxHeight: "94%" }} className="img-fluid" src={imageSrc} alt="City" />
+            <img style={{ maxHeight: "94%" }} className="img-fluid" src={`/images/city/c${index}.webp`} alt="City" />
 
         </>
 

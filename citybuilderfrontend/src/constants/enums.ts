@@ -1,8 +1,11 @@
-export enum Resources {
-  FOOD = "FOOD2",
+export enum ResourcesEnum {
+  FOOD = "FOOD",
   WOOD = "WOOD",
   STONE = "STONE",
   GOLD = "GOLD",
   POPULATION = "POPULATION",
   SATISFACTION = "SATISFACTION",
+  AMBER ="AMBER",
+  TOOLS = "TOOLS",
+  WEAPONS = "WEAPONS",
 }

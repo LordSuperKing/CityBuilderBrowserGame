@@ -9,11 +9,11 @@ export function GameSpeedSlider() {
     const dispatch = useAppDispatch();
     const gameSpeed = useAppSelector((state) => state.settings.gameSpeed);
 
-    const maxSpeed = 5000;
-    const minSpeed = 200;
+    const min = 3000;
+    const max = 50;
 
     const handleSliderChange = (value: any) => {
-        const reversedValue = maxSpeed - value + minSpeed;
+        const reversedValue = min - value + max;
         dispatch(stopGame())
         dispatch(setGameSpeed(reversedValue));
         dispatch(startGame())
@@ -21,9 +21,9 @@ export function GameSpeedSlider() {
 
     return (
             <Slider className='ms-3'
-                min={minSpeed}
-                max={maxSpeed}
-                value={maxSpeed - gameSpeed + minSpeed}
+                min={max}
+                max={min}
+                value={min - gameSpeed + max}
                 onChange={handleSliderChange}
                 trackStyle={{ backgroundColor: 'blue', height: 10 }}
                 handleStyle={{

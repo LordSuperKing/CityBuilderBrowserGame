@@ -19,7 +19,6 @@ export const eventSlice = createSlice({
   reducers: {
     handleAdvisorShow: (state, action: PayloadAction<Event>) => {
       state.activatedEvent = state.eventList.find((it) => it.id === action.payload.id);
-      console.log('activated event: ' +  JSON.stringify(state.activatedEvent))
 
       state.showAdvisor = true;
       if (action.payload.eventIsComplete) {
