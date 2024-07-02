@@ -27,13 +27,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./citybuilderfrontend  # Standard-Arbeitsverzeichnis für alle Schritte
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: citybuilderfrontend
 
       - name: Show current directory
         run: pwd
