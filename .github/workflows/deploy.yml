@@ -31,10 +31,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: citybuilderfrontend
 
       - name: Show current directory
+        working-directory: ./citybuilderfrontend
         run: pwd
 
       - name: List directory contents
