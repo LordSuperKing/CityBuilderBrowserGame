@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
-          path: ./citybuilderfrontend/dist'  # Der Ordner, in dem das gebaute Projekt gespeichert ist
+          path: ./citybuilderfrontend/dist  # Der Ordner, in dem das gebaute Projekt gespeichert ist
 
       - name: Deploy to GitHub Pages
         id: deployment
