@@ -40,6 +40,7 @@ jobs:
         run: ls -la  
 
       - name: Set up Node
+              
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -52,9 +53,11 @@ jobs:
         run: ls -la
 
       - name: Install dependencies
+        working-directory: ./citybuilderfrontend  
         run: npm ci
 
       - name: Build
+        working-directory: ./citybuilderfrontend  
         run: npm run build
 
       - name: Setup Pages
@@ -64,7 +67,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
-          path: './dist'  # Der Ordner, in dem das gebaute Projekt gespeichert ist
+          path: ./citybuilderfrontend/dist'  # Der Ordner, in dem das gebaute Projekt gespeichert ist
 
       - name: Deploy to GitHub Pages
         id: deployment
