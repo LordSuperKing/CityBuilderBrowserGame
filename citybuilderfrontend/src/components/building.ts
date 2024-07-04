@@ -1,5 +1,6 @@
 import { ResourcesEnum } from "../constants/enums";
 import { Resources } from "../redux/resourcesSlice";
+import food1 from "../../public/images/economy/food1.webp"
 
 export type BuildingData = {
   id: string;
@@ -24,7 +25,7 @@ export const allBuildingsData: BuildingData[] = [
     resource: ResourcesEnum.FOOD,
     baseProductionRate: 1.1,
     isProducing: import.meta.env.VITE_BUILDING_1_IS_PRODUCING === "true",
-    imageSrc: "/images/economy/food1.webp",
+    imageSrc: food1,
     isUpgradeAvailable: Boolean(
       import.meta.env.VITE_BUILDING_1_IS_UPGRADE_AVAILABLE === "true"
     ),
